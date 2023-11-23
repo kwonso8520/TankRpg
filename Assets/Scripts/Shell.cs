@@ -28,8 +28,8 @@ public class Shell : MonoBehaviour
         Destroy(gameObject);
         if (collision.collider.tag == "Enemy")
         {
-            Enemy enemy = collision.collider.GetComponent<Enemy>();
-            enemy.GetDamage(td.damage);
+            Chicken chicken = collision.collider.GetComponent<Chicken>();
+            chicken.GetDamage(td.damage);
         }
     }
 }
