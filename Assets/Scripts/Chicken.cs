@@ -22,6 +22,8 @@ public class Chicken : MonoBehaviour
     private float enemyHp;
     public float expValue = 50f;
     private UiManager uiManager;
+    [SerializeField]
+    private Transform rayPos;
 
     private void Start()
     {
@@ -46,6 +48,7 @@ public class Chicken : MonoBehaviour
         {
             Die();
         }
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
         Move();
         ElapsedTime();
         checkFrontWall();
@@ -71,7 +74,7 @@ public class Chicken : MonoBehaviour
     }
     private void checkFrontWall()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit, distance, construct))
+        if (Physics.Raycast(rayPos.position, transform.forward, out hit, distance, construct))
         {
             transform.forward = transform.forward * -1;
             Move();
